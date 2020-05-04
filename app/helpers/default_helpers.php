@@ -24,10 +24,30 @@ function validateEmail($email)
 }
 
 
+function getFirstLine($text)
+{
+ $arrayLines=explode(".",$text);
+
+ return $arrayLines[0];
+
+}
+
+
+function giveBreaks($text)
+{
+$arrayData=explode('.',$text);
+
+for($i=0;$i<count($arrayData);$i++)
+{
+ echo $arrayData[$i].'.';
+ if($i%3==0)
+ echo '<br><br>';
+
+}
 
 
 
-
+}
 
 
 

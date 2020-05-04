@@ -2,6 +2,7 @@
   class Pages extends Controller {
     public function __construct(){
       $this->pageModel=$this->model('Page');
+      $this->userModel=$this->model('Post');
     }
     
     public function index(){
@@ -11,7 +12,7 @@
 
       $data = [
         'title' => 'PIK',
-        'description' => 'Faqe e thjeshte e lajmeve'
+        'description' => 'Nje faqe e bere me shume sakrifica me 4 shoke te ngushte (te paraqitur ne foto)'
       ];
      
       $this->view('pages/index', $data);
@@ -32,7 +33,8 @@
     {
       $posts=$this->pageModel->getSpecificPosts('Teknologji');
       $data = [
-        'posts' => $posts
+        'posts' => $posts,
+        'title'=>'Teknologjia'
       ];
 
       $this->view('pages/teknologji', $data);
@@ -45,7 +47,8 @@
     {
       $posts=$this->pageModel->getSpecificPosts('Sport');
       $data = [
-        'posts' => $posts
+        'posts' => $posts,
+        'title'=>'Sporti'
       ];
 
       $this->view('pages/sport', $data);
@@ -57,7 +60,9 @@
     {
       $posts=$this->pageModel->getSpecificPosts('Bote');
       $data = [
-        'posts' => $posts
+        'posts' => $posts,
+        'title'=>'Bota'
+        
       ];
 
       $this->view('pages/bote', $data);
@@ -69,11 +74,19 @@
     {
       $posts=$this->pageModel->getSpecificPosts('Kulture');
       $data = [
-        'posts' => $posts
+        'posts' => $posts,
+        'title'=>'Kultura'
       ];
 
       $this->view('pages/kulture', $data);
 
+
+    }
+
+    public function details($id){
+      $post=$this->userModel->getPostById($id);
+      $data=['post'=>$post];
+      $this->view('pages/details',$data);
 
     }
 
