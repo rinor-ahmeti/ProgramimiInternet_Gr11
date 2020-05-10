@@ -81,4 +81,30 @@
         return false;
       }
     }
+
+    public function getFrontPosts($lloji)
+    {
+    $this->db->query('SELECT * FROM posts where lloji=:lloji LIMIT 1');
+    $this->db->bind(':lloji',$lloji);
+    $row = $this->db->single();
+    
+          return $row;
+    
+    }
+    
+    public function getallFrontPosts()
+    {
+     
+      $frontPagePosts=
+      ['Teknologji'=>$this->getFrontPosts('Teknologji'),
+      'Bote'=>$this->getFrontPosts('Bote'),
+      'Sport'=>$this->getFrontPosts('Sport'),
+      'Kulture'=>$this->getFrontPosts('Kulture')
+      
+    ];
+    return $frontPagePosts;
+    }
+    
+
+    
   }

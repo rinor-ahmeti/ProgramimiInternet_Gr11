@@ -1,6 +1,21 @@
 <?php
   class Users extends Controller {
     public function __construct(){
+    
+      if(!isset($_COOKIE['user']))
+      {
+       $cookie_name='user';
+        $arr=[
+          'Teknologji'=>0,
+          'Kulture'=>0,
+          'Sport'=>0,
+          'Bote'=>0
+        ];
+        setcookie($cookie_name, serialize($arr), time() + (86400 * 30), "/");
+
+      }
+   
+
       $this->userModel = $this->model('User');
     }
 
@@ -22,7 +37,7 @@
 
         // Validate Email
         if(empty($data['email'])){
-          $data['email_err'] = 'Pleae enter email';
+          $data['email_err'] = 'Please enter email';
         }
 
         // Validate Password

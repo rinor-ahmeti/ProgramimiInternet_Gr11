@@ -4,7 +4,8 @@
 
 <?php foreach($data['posts'] as $post) : ?>
 <br>
-       <img class="card-img-top" style="width:1100px;height:400px;"src="<?php echo URLROOT.'/' .'img/'.$post->image;?>" alt="Card image cap">
+<div style="width:900px;">
+       <img class="card-img-top" style="width:900px;height:400px;"src="<?php echo URLROOT.'/' .'img/'.$post->image;?>" alt="Card image cap">
        <div class="card-body">
          <h2 class="card-title"><?php echo $post->title?></h2>
          <p class="card-text"><?php echo getFirstLine($post->body).'.';?></p>
@@ -13,7 +14,7 @@
        <div class="card-footer text-muted">
        Posted on <?php echo $post->created_at?> 
        </div>
-
+       </div>
 <br>
   <?php endforeach; ?>
 

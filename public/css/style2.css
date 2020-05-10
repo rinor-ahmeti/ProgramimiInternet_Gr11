@@ -1,0 +1,24 @@
+.carousel-foto
+{
+width:800px;
+height:600px;
+
+
+}
+
+
+#maintext{
+    margin-bottom:30px;
+    position:relative;
+    bottom:30px;
+    font-family: 'Bree Serif',serif;
+}
+/* style="font-family: 'Bree Serif', serif;" */
+
+
+.black{
+
+    font-weight:bold;
+    color:white;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}

@@ -44,12 +44,54 @@ for($i=0;$i<count($arrayData);$i++)
  echo '<br><br>';
 
 }
+}
 
 
+function downloadFile($title,$body,$id,$created_at)
+{
+    // fopen($_SERVER['DOCUMENT_ROOT'].'test.txt','a+');
+$file = '/home/art/Downloads/test.txt';
+$txt = fopen($file, "a+") or die("Unable to open file!");
+fwrite($txt, "$title\n\n".$body. "\nPost id is $id and is created at $created_at");
+fclose($txt);
+
+header('Content-Description: File Transfer');
+header('Content-Disposition: attachment; filename='.basename($file));
+header('Expires: 0');
+header('Cache-Control: must-revalidate');
+header('Pragma: public');
+header('Content-Length: ' . filesize(2*$file));
+header("Content-Type: text/plain");
+readfile($file);
 
 }
 
 
 
+function returnMax($arr)
+{
+    return  array_keys($arr,max($arr))[0];
+}
 
-?>
+function randomizer()
+{
+$nr= rand(1,4);
+switch($nr)
+{
+case 1:
+    return 'Teknologjia';
+break;
+case 2:
+    return 'Bote';
+break;
+case 3:
+    return 'Kulture';
+break;
+case 4:
+    return 'Sport';
+break;
+default:
+return;
+
+} 
+}

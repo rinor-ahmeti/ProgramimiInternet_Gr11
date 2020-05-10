@@ -13,18 +13,12 @@
     <h1  style="font-family: 'Bree Serif', serif;"class=" h3 mt-4"><?php echo $data['post']->title?></h1>
 
     <!-- Author -->
-    <p class="lead">
-      by
-      <a href="#">User</a>
-    </p>
-
     <hr>
 
     <!-- Date/Time -->
-    <p>Posted on <?php echo $data['post']->created_at?></p>
-
+    <p> <?php printf("Posted on %s",$data['post']->created_at);?></p>
+    
     <hr>
-
     <!-- Preview Image -->
     <img style="width:900px;height:300px;" class="img-fluid rounded" src="<?php echo URLROOT .'/'.'img/'. $data['post']->image?>" alt="">
 
@@ -32,6 +26,11 @@
 
     <p style ="font-family: 'Lato', sans-serif;
 "> <?php giveBreaks($data['post']->body)?></p>
+<form  action="<?php echo URLROOT; ?>/pages/details/<?php echo $data['post']->id; ?>" method="POST">
+    <input  name="download" type="submit" value="Shkarkoje Lajmin" class="btn btn-success">
+  </form>
+
+</form>
 
     <!-- Comments Form -->
     <div class="card my-4">
