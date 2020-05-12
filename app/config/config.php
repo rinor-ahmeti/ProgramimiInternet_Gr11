@@ -8,9 +8,11 @@
   // App Root
   define('APPROOT', dirname(dirname(__FILE__)));
   // URL Root
+
   define('URLROOT', 'http://localhost:8080/shareposts');
   // Site Name
-  define('SITENAME', 'SharePosts');
+  define('SITENAME', 'PIK');
   // App Version
   define('APPVERSION', '1.0.0');
 
+///home/art/Documents/github/ProgramimiInternet_Gr11/htdocs/shareposts/app

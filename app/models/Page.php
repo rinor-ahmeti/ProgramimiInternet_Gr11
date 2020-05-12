@@ -12,21 +12,12 @@ public function __construct()
 
 public function getspecificPosts($data)
 {
-    $this->db->query('SELECT * from posts
-    where lloji=:lloji
-    
-    ');
+    $this->db->query('SELECT * from posts where lloji=:lloji');
 
-$this->db->bind(':lloji',$data);
+        $this->db->bind(':lloji',$data);
 
-$results = $this->db->resultSet();
+            $results = $this->db->resultSet();
 
-return $results;
+            return $results;
 }
-
-
-
 }
-
-
-?>

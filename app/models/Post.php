@@ -105,6 +105,14 @@
     return $frontPagePosts;
     }
     
+    public function getTitlePosts()
+    {
+      $this->db->query('SELECT * FROM posts WHERE title=:title');
+      $this->db->bind(':title',$_GET['q']);
+      $results=$this->db->resultSet();
+      return $results;
+
+    }
 
     
   }

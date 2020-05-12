@@ -79,7 +79,7 @@ $nr= rand(1,4);
 switch($nr)
 {
 case 1:
-    return 'Teknologjia';
+    return 'Teknologji';
 break;
 case 2:
     return 'Bote';

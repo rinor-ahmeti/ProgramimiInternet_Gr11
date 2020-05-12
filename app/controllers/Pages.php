@@ -28,7 +28,7 @@ class Pages extends Controller
    for($i=0;$i<2;$i++)
    {
      $indexes[$i]=randomizer();
-    while($indexes[$i]==returnMax(unserialize($_COOKIE['user'])).'a'){
+    while($indexes[$i]==returnMax(unserialize($_COOKIE['user']))){
     $indexes[$i]=randomizer();
     }
    }
@@ -81,7 +81,7 @@ class Pages extends Controller
     $posts = $this->pageModel->getSpecificPosts('Teknologji');
     $data = [
       'posts' => $posts,
-      'title' => 'Teknologjia'
+      'title' => 'Teknologji'
     ];
 
     $this->view('pages/teknologji', $data);
@@ -181,8 +181,7 @@ class Pages extends Controller
   public function details($id)
   {
     
-
-
+   
     $post = $this->userModel->getPostById($id);
     $data = ['post' => $post];
     if ($_SERVER['REQUEST_METHOD'] == 'POST')
