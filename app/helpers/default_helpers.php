@@ -95,3 +95,20 @@ return;
 
 } 
 }
+
+
+function sendEmail($id,$body,$toEmail='insane12333@gmail.com')
+{
+    
+$subject = "Email ne postin me id $id";
+$headers = "From: sender\'s email";
+
+try
+{
+mail($toEmail,$subject,$body,$headers);
+}
+catch(\Throwable $th)
+{
+echo $th;
+}
+}

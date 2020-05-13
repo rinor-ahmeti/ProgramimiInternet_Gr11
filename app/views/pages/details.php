@@ -36,11 +36,12 @@
     <div class="card my-4">
       <h5 class="card-header">Leave a Comment:</h5>
       <div class="card-body">
-        <form>
+      <form  action="<?php echo URLROOT; ?>/pages/details/<?php echo $data['post']->id; ?>" method="POST">
+
           <div class="form-group">
-            <textarea class="form-control" rows="3"></textarea>
+            <textarea  name="mesazhi"class="form-control" rows="3"></textarea>
           </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
+         <input type="submit"  class="btn btn-primary" value="Submit Comment">
         </form>
       </div>
     </div>

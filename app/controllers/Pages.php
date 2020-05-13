@@ -16,24 +16,23 @@ class Pages extends Controller
       setcookie($cookie_name, serialize($arr), time() + (86400 * 30), "/");
     }
 
-    
+
     $this->pageModel = $this->model('Page');
-    $this->userModel = $this->model('Post');
+    $this->postModel = $this->model('Post');
   }
 
   public function index()
   {
-//returnMax(unserialize($_COOKIE['user']
-    $indexes=[];
-   for($i=0;$i<2;$i++)
-   {
-     $indexes[$i]=randomizer();
-    while($indexes[$i]==returnMax(unserialize($_COOKIE['user']))){
-    $indexes[$i]=randomizer();
+    //returnMax(unserialize($_COOKIE['user']
+    $indexes = [];
+    for ($i = 0; $i < 2; $i++) {
+      $indexes[$i] = randomizer();
+      while ($indexes[$i] == returnMax(unserialize($_COOKIE['user']))) {
+        $indexes[$i] = randomizer();
+      }
     }
-   }
 
-    $posts=$this->userModel-> getallFrontPosts();
+    $posts = $this->postModel->getallFrontPosts();
     if (isLoggedIn()) {
       redirect('posts');
     }
@@ -41,8 +40,8 @@ class Pages extends Controller
     $data = [
       'title' => 'PIK',
       'description' => 'Nje faqe e bere me shume sakrifica me 4 shoke te ngushte (te paraqitur ne foto)',
-      'posts'=>$posts,
-      'indexes'=>$indexes
+      'posts' => $posts,
+      'indexes' => $indexes
     ];
 
     $this->view('pages/index', $data);
@@ -178,17 +177,45 @@ class Pages extends Controller
     $this->view('pages/kulture', $data);
   }
 
-  public function details($id)
+  public function details($id, $title = '')
   {
-    
-   
-    $post = $this->userModel->getPostById($id);
+
+    if (is_string($title) && isset($title)) {
+      $data = $this->postModel->getTitlePosts();
+      foreach ($post as $data) {
+        # code...
+      
+      echo "<table>";
+      echo "<tr>";
+      echo "<th>CustomerID</th>";
+      echo "<td>" .  $post->body. "</td>";
+      echo "<th>CompanyName</th>";
+      echo "<td>" . $cname . "</td>";
+      echo "<th>ContactName</th>";
+      echo "<td>" . $name . "</td>";
+      echo "<th>Address</th>";
+      echo "<td>" . $adr . "</td>";
+      echo "<th>City</th>";
+      echo "<td>" . $city . "</td>";
+      echo "<th>PostalCode</th>";
+      echo "<td>" . $pcode . "</td>";
+      echo "<th>Country</th>";
+      echo "<td>" . $country . "</td>";
+      echo "</tr>";
+      echo "</table>";
+    }
+  }
+
+
+
+    if (isset($_POST['mesazhi'])) {
+      sendEmail($id, $_POST['mesazhi']);
+    }
+
+    $post = $this->postModel->getPostById($id);
     $data = ['post' => $post];
-    if ($_SERVER['REQUEST_METHOD'] == 'POST')
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['download']))
       downloadFile($post->title, $post->body, $post->id, $post->created_at);
-
-
-
 
     $this->view('pages/details', $data);
   }
