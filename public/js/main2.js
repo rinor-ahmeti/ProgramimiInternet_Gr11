@@ -6,24 +6,22 @@ async function getCorona() {
   document.getElementById('recv').textContent = (rez.Global.TotalRecovered);
 
 }
+ if(window.location.href.match('about'))
 getCorona();
 
 
-function showCustomer(str) {
-  var xhttp;
-  if (str == "") {
-    document.getElementById("txtHint").innerHTML = "";
-    return;
-  }
-  xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function () {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("txtHint").innerHTML = this.responseText;
-    }
-  };
-  if(!(str instanceof String))
-  return;
-  xhttp.open("GET", "http://localhost:8080/shareposts/pages/details" + str, true);
-  xhttp.send();
+async function showCustomer(str) {
+const rez = await (await fetch('http://localhost:8080/shareposts/pages/ajax/'+str)).text();
+
+var parser = new DOMParser();
+
+// Parse the text
+var doc = parser.parseFromString(rez, "text/html");
+
+
+console.log(doc);
+document.getElementById('txtHint').innerHTML=doc.body.innerHTML;
 
 }
+
+

@@ -105,14 +105,14 @@
     return $frontPagePosts;
     }
     
-    public function getTitlePosts()
+    public function getTitlePosts($title)
     {
-      $this->db->query('SELECT * FROM posts WHERE title=:title');
-      $this->db->bind(':title',$_GET['q']);
+      $this->db->query('SELECT * FROM posts WHERE REPLACE(title," ","") like :title');
+      $this->db->bind(':title','%'.$title.'%');
       $results=$this->db->resultSet();
       return $results;
 
     }
-
+//REPLACE(str, find_string, replace_with)
     
   }

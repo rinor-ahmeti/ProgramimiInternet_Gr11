@@ -27,5 +27,5 @@
   <p id="recv">23</p>
 </div>
 </div>
-  
+
 <?php require APPROOT . '/views/inc/footer.php'; ?>

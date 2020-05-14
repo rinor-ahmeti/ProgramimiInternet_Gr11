@@ -177,35 +177,8 @@ class Pages extends Controller
     $this->view('pages/kulture', $data);
   }
 
-  public function details($id, $title = '')
+  public function details($id)
   {
-
-    if (is_string($title) && isset($title)) {
-      $data = $this->postModel->getTitlePosts();
-      foreach ($post as $data) {
-        # code...
-      
-      echo "<table>";
-      echo "<tr>";
-      echo "<th>CustomerID</th>";
-      echo "<td>" .  $post->body. "</td>";
-      echo "<th>CompanyName</th>";
-      echo "<td>" . $cname . "</td>";
-      echo "<th>ContactName</th>";
-      echo "<td>" . $name . "</td>";
-      echo "<th>Address</th>";
-      echo "<td>" . $adr . "</td>";
-      echo "<th>City</th>";
-      echo "<td>" . $city . "</td>";
-      echo "<th>PostalCode</th>";
-      echo "<td>" . $pcode . "</td>";
-      echo "<th>Country</th>";
-      echo "<td>" . $country . "</td>";
-      echo "</tr>";
-      echo "</table>";
-    }
-  }
-
 
 
     if (isset($_POST['mesazhi'])) {
@@ -219,4 +192,17 @@ class Pages extends Controller
 
     $this->view('pages/details', $data);
   }
+
+
+  public function ajax($request='null')
+  { 
+     $post=$this->postModel->getTitlePosts($request);
+    
+   
+     foreach ($post as $specificPost) {
+       $location=URLROOT.'/pages/details/'.$specificPost->id;
+ echo "<a href=$location> ID:$specificPost->id </a> dhe eshte krijuar ne $specificPost->created_at";
+     }
+     
+    }
 }

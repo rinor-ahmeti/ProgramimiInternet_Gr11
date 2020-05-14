@@ -92,8 +92,8 @@
       <h5 class="card-header">Search</h5>
       <div class="card-body">
     
-          <input type="text"   onchange="showCustomer(this.value);" class="form-control" placeholder="Search for...">
-          <input class="btn btn-primary"  style="margin-top:10px;margin-left:10px;" type="submit" value="Search">
+          <input type="text"   onkeyup="showCustomer(this.value);" class="form-control" placeholder="Search for...">
+         <button  class="btn btn-primary">Search</button>
           <span class="input-group-btn">
            
           </span>
@@ -101,7 +101,7 @@
     </div>
 
     <!-- Categories Widget -->
-    <div class="card my-4">
+    <div  class="card my-4">
       <h5 class="card-header">Rezultati</h5>
     
 <div id="txtHint"></div>
