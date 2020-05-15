@@ -43,7 +43,7 @@ function add()
         // SANITIZING THE DATA
         $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
-        // Init data
+        //INIT DATA
         $data =[
           'name' => trim($_POST['name']),
           'email' => trim($_POST['email']),
@@ -55,31 +55,31 @@ function add()
          
         ];
 
-        // EMAIL VALIDATION
+        // VALIDATION OF EMAIL
         if(empty($data['email'])){
           $data['email_err'] = 'Pleae enter email';
         } else {
-          // CHECKIN EMAIL WHETHER IT IS TAKEN
+          // CHECKIN EMAIL IF ITS TAKEN
           if($this->userModel->findUserByEmail($data['email'])){
             $data['email_err'] = 'Email is already taken';
           }
         }
 
-        // NAME VALIDATION
+        // VALIDATION OF NAME
         if(empty($data['name'])){
           $data['name_err'] = 'Please enter name';
         }
 
-        // PASSWORD VALIDATION
+        // VALIDATION OF PASSWORD
         if(empty($data['password'])){
           $data['password_err'] = 'Please enter your password';
         } elseif(!validatePassword($data['password'])){
           $data['password_err'] = 'Password must contain at least 1 uppercase character, a number,1 lowercase character and it must be longer than 8 characters';
         }
 
-        // Validate Confirm Password
+        //VALIDATE CONFIRM PASSWORD
        
-        // Make sure errors are empty
+        //MAKE SURE ERRORS ARE EMPTY 
         if(empty($data['email_err']) && empty($data['name_err']) && empty($data['password_err']) ){
           // Validated
           
@@ -95,12 +95,12 @@ function add()
           }
 
         } else {
-          // Load view with errors
+          //LOAD VIEW WITH ERRORS
           $this->view('admins/add', $data);
         }
 
       } else {
-        // Init data
+        //DATA INIT
         $data =[
           'name' => '',
           'email' => '',
@@ -117,7 +117,7 @@ function add()
 
  public function edit($id){
       if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        // Sanitize POST array
+        // SANITAZE POST ARRAY
         $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
         $data = [
@@ -130,7 +130,7 @@ function add()
             'password_err'=>''
         ];
 
-        // Validate data
+        // VALIDATE DATA
         if(empty($data['name'])){
           $data['name_err'] = 'Please enter name';
         }
@@ -149,9 +149,9 @@ function add()
 
 
 
-        // Make sure no errors
+        // MAKE SURE THERE ARE NO ERRORS
         if(empty($data['name_err']) && empty($data['email_err'])&& empty($data['password_err'])){
-          // Validated
+          // VALIDATED
           if($this->adminModel->updateUser($data)){
         
             redirect('admins/index');
@@ -159,12 +159,12 @@ function add()
             die('Something went wrong');
           }
         } else {
-          // Load view with errors
+          //LOAD VIEW WITH ERRORS
           $this->view('admins/edit', $data);
         }
 
       } else {
-        // Get existing post from model
+        //GET EXISTING POST FROM MODEL 
         $admin = $this->adminModel->getUserById($id);
 
     
@@ -183,11 +183,11 @@ function add()
 
     public function delete($id){
       if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        // Get existing post from model
+        // GET EXISTING POST FROM MODEL
         $user = $this->adminModel->getuserById($id);
       }
         
-        // Check for owner
+        // CHECK IS THERE IS OWNER
         if(!$_SESSION['user_status']=='Admin'){
           redirect('index');
         }
