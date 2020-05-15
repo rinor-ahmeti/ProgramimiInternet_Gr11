@@ -20,13 +20,13 @@
 
   
     public function login(){
-      // Check for POST
+      // CHECK FOR POST
       if($_SERVER['REQUEST_METHOD'] == 'POST'){
-        // Process form
-        // Sanitize POST data
+        //PROCESS FORM
+        //SANITIZE POST DATA
         $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
         
-        // Init data
+        //INIT DATA
         $data =[
           'email' => trim($_POST['email']),
           'password' => trim($_POST['password']),
@@ -34,12 +34,12 @@
           'password_err' => '',      
         ];
 
-        // Validate Email
+        //VALIDATE EMAIL
         if(empty($data['email'])){
           $data['email_err'] = 'Please enter email';
         }
 
-        // Validate Password
+        //VALIDATE PASSWORD
         if(empty($data['password'])){
           $data['password_err'] = 'Please enter password';
         }
@@ -48,22 +48,22 @@
           $data['email_err']='Invalid Email';
         }
 
-        // Check for user/email
+        //CHECK FOR USER/EMAIL
         if($this->userModel->findUserByEmail($data['email'])){
-          // User found
+          //USER FOUND
         } else {
-          // User not found
+          //USER NOT FOUND
           $data['email_err'] = 'Invalid Credentials';
         }
 
-        // Make sure errors are empty
+        //MAKE SURE ERRORS ARE EMPTY
         if(empty($data['email_err']) && empty($data['password_err'])){
-          // Validated
-          // Check and set logged in user
+          //VALIDATED
+          //CHECK AND SET LOGGED IN USER
           $loggedInUser = $this->userModel->login($data['email'], $data['password']);
 
           if($loggedInUser){
-            // Create Session
+            //CREATE SESSION
             $this->createUserSession($loggedInUser);
           } else {
             $data['password_err'] = 'Password incorrect';
@@ -71,13 +71,13 @@
             $this->view('users/login', $data);
           }
         } else {
-          // Load view with errors
+          //LOAD VIEW WITH ERRORS
           $this->view('users/login', $data);
         }
 
 
       } else {
-        // Init data
+        //INIT DATA
         $data =[    
           'email' => '',
           'password' => '',
@@ -85,7 +85,7 @@
           'password_err' => '',        
         ];
 
-        // Load view
+        //LOAD VIEW
         $this->view('users/login', $data);
       }
     }
