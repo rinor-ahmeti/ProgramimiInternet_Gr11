@@ -36,11 +36,11 @@ public function index()
 
 function add()
 {
-      // Check for POST
+      // POST METHOD CHECKER
       if($_SERVER['REQUEST_METHOD'] == 'POST'){
         // Process form
   
-        // Sanitize POST data
+        // SANITIZING THE DATA
         $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
         // Init data
@@ -55,41 +55,38 @@ function add()
          
         ];
 
-        // Validate Email
+        // EMAIL VALIDATION
         if(empty($data['email'])){
           $data['email_err'] = 'Pleae enter email';
         } else {
-          // Check email
+          // CHECKIN EMAIL WHETHER IT IS TAKEN
           if($this->userModel->findUserByEmail($data['email'])){
             $data['email_err'] = 'Email is already taken';
           }
         }
 
-        // Validate Name
+        // NAME VALIDATION
         if(empty($data['name'])){
           $data['name_err'] = 'Please enter name';
         }
 
-        // Validate Password
+        // PASSWORD VALIDATION
         if(empty($data['password'])){
-          $data['password_err'] = 'Pleae enter password';
+          $data['password_err'] = 'Please enter your password';
         } elseif(!validatePassword($data['password'])){
           $data['password_err'] = 'Password must contain at least 1 uppercase character, a number,1 lowercase character and it must be longer than 8 characters';
         }
 
-
-
         // Validate Confirm Password
        
-
         // Make sure errors are empty
         if(empty($data['email_err']) && empty($data['name_err']) && empty($data['password_err']) ){
           // Validated
           
-          // Hash Password
+          // HASHING PASSWORD
           $data['password'] = password_hash($data['password'], PASSWORD_BCRYPT);
 
-          // Register User
+          // REGISTER USER
           if($this->adminModel->addUser($data)){
           
             redirect('admins/index');
@@ -113,12 +110,10 @@ function add()
           'password_err' => '',
         ];
 
-        // Load view
+        // LOADING VIEWS
         $this->view('admins/add', $data);
       }
 }
-
-
 
  public function edit($id){
       if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -148,7 +143,7 @@ function add()
 
         if(!validatePassword($_POST['password']))
         {
-          $data['password_err']='Password qe nuk  i ploteson standartet';
+          $data['password_err']='Passwordi juaj nuk i ploteson kriteret!';
           $data['password']='';
         }
 
@@ -172,9 +167,7 @@ function add()
         // Get existing post from model
         $admin = $this->adminModel->getUserById($id);
 
-        // Check for owner
-      
-
+    
         $data = [
           'id' => $id,
           'name' => $admin->name,
@@ -200,23 +193,13 @@ function add()
         }
 
         if($this->adminModel->deleteUser($id)){
-        // echo  '<script> alert("eshte fshire"); </script>';
           redirect('admins');
         } else {
-          die('Something went wrong in deleting');
+          die('Something went wrong in deleting. Try again.');
         }
       
       
     }
   }
-
-
-
-
-
-
-
-
-
 
 ?>

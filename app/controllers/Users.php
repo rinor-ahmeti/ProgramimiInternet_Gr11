@@ -15,7 +15,6 @@
 
       }
    
-
       $this->userModel = $this->model('User');
     }
 

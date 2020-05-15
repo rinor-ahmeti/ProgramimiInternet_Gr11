@@ -9,10 +9,6 @@ class Posts extends Controller
 
     if ($_SESSION['user_status'] == 'Admin')
       redirect('admins/index');
-
-
-
-
     $this->postModel = $this->model('Post');
     $this->userModel = $this->model('User');
   }
@@ -49,14 +45,14 @@ class Posts extends Controller
 
       // Validate data
       if (empty($data['title'])) {
-        $data['title_err'] = 'Please enter title';
+        $data['title_err'] = 'Please enter a title';
       }
       if (empty($data['body'])) {
-        $data['body_err'] = 'Please enter body text';
+        $data['body_err'] = 'Please enter some body text';
       }
 
       if (empty($data['image'])) {
-        $data['image_err'] = 'Please insert image';
+        $data['image_err'] = 'Please insert an image';
       }
 
       if (empty($data['lloji'])) {

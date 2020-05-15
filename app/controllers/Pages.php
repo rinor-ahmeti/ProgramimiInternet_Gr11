@@ -50,8 +50,8 @@ class Pages extends Controller
   public function about()
   {
     $data = [
-      'title' => 'About Us',
-      'description' => 'Bere nga Art Ahmetaj, Rinor Ahmeti,Adi SYYYYLEJMANIII dhe Samir Simnica'
+      'title' => 'About Us // Rreth Nesh',
+      'description' => 'Krijuar nga Art Ahmetaj,Adi Sylejmani, Rinor Ahmeti dhe Samir Simnica.'
     ];
 
     $this->view('pages/about', $data);
@@ -133,11 +133,6 @@ class Pages extends Controller
       ];
       setcookie('user', serialize($arr), time() + (86400 * 30), "/");
     }
-
-
-
-
-
 
     $posts = $this->pageModel->getSpecificPosts('Bote');
     $data = [

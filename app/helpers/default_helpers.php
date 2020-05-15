@@ -32,7 +32,7 @@ function getFirstLine($text)
 
 }
 
-
+// me i formatu tekstin mire kur e postojme lajmin ne body
 function giveBreaks($text)
 {
 $arrayData=explode('.',$text);
@@ -66,8 +66,6 @@ readfile($file);
 
 }
 
-
-
 function returnMax($arr)
 {
     return  array_keys($arr,max($arr))[0];
@@ -96,13 +94,10 @@ return;
 } 
 }
 
-
 function sendEmail($id,$body,$toEmail='insane12333@gmail.com')
 {
-    
 $subject = "Email ne postin me id $id";
 $headers = "From: sender\'s email";
-
 try
 {
 mail($toEmail,$subject,$body,$headers);
