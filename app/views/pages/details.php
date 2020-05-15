@@ -110,9 +110,20 @@
 
     <!-- Side Widget -->
     <div class="card my-4">
-      <h5 class="card-header">Side Widget</h5>
+      <h5 class="card-header">Rubrikat tjera</h5>
       <div class="card-body">
-        You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+      <p>
+        <a href="http://localhost:8080/shareposts/pages/teknologji">Teknologji</a>
+      </p>
+      <p>
+        <a href="http://localhost:8080/shareposts/pages/sport">Sport</a>
+      </p>
+      <p>
+        <a href="http://localhost:8080/shareposts/pages/bote">Bote</a>
+      </p>
+      <p>
+        <a href="http://localhost:8080/shareposts/pages/kulture">Kulture</a>
+      </p>
       </div>
     </div>
 
