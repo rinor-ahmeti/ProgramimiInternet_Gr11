@@ -18,9 +18,31 @@
 <br>
   <?php endforeach; ?>
     <!-- Side Widget -->
-   
+    <style> #rightbox{ 
+                float:right; 
+                width:25%; 
+                height:280px;}
+                </style>
     
-   
+    <div class="card my-4" id="rightbox">
+
+        <h5 class="card-header">Rubrikat tjera</h5>
+        <div class="card-body">
+          <p>
+            <a href="http://localhost:8080/shareposts/pages/teknologji">Teknologji</a>
+          </p>
+          <p>
+            <a href="http://localhost:8080/shareposts/pages/sport">Sport</a>
+          </p>
+          <p>
+            <a href="http://localhost:8080/shareposts/pages/bote">Bote</a>
+          </p>
+          <p>
+            <a href="http://localhost:8080/shareposts/pages/kulture">Kulture</a>
+          </p>
+        </div>
+      </div>
+     
 
 
 

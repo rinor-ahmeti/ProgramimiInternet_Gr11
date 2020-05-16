@@ -6,19 +6,28 @@ async function getCorona() {
   document.getElementById('recv').textContent = (rez.Global.TotalRecovered);
 
 }
- if(window.location.href.match('about'))
-getCorona();
+if (window.location.href.match('about'))
+  getCorona();
 
 async function showCustomer(str) {
-const rez = await (await fetch('http://localhost:8080/shareposts/pages/ajax/'+str)).text();
+  const rez = await (await fetch('http://localhost:8080/shareposts/pages/ajax/' + str)).text();
 
-var parser = new DOMParser();
+  var parser = new DOMParser();
 
-var doc = parser.parseFromString(rez, "text/html");
+  var doc = parser.parseFromString(rez, "text/html");
 
-console.log(doc);
-document.getElementById('txtHint').innerHTML=doc.body.innerHTML;
+  console.log(doc);
+  document.getElementById('txtHint').innerHTML = doc.body.innerHTML;
 
 }
 
 
+async function postComment(comment) {
+
+  const mesazhi = document.getElementById('mesazhi').value;
+  let str=mesazhi +',';
+str+=comment; 
+ await fetch('http://localhost:8080/shareposts/pages/comment/' + str);
+
+
+}

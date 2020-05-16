@@ -1,6 +1,9 @@
 <!-- Page Content -->
 <?php require APPROOT . '/views/inc/header.php'; ?>
-
+<script>
+const id= <?php echo $data['post']->id?>;
+const typi='<?php echo $data['post']->lloji?>';
+</script>
 <!-- Page Content -->
 <div class="container">
 
@@ -23,7 +26,7 @@
     <img style="width:900px;height:300px;" class="img-fluid rounded" src="<?php echo URLROOT .'/'.'img/'. $data['post']->image?>" alt="">
 
     <hr>
-
+<!--  -->
     <p style ="font-family: 'Lato', sans-serif;
 "> <?php giveBreaks($data['post']->body)?></p>
 <form  action="<?php echo URLROOT; ?>/pages/details/<?php echo $data['post']->id; ?>" method="POST">
@@ -34,14 +37,14 @@
 
     <!-- Comments Form -->
     <div class="card my-4">
-      <h5 class="card-header">Leave a Comment:</h5>
+      <h5 class="card-header">Shkruaj koment</h5>
       <div class="card-body">
       <form  action="<?php echo URLROOT; ?>/pages/details/<?php echo $data['post']->id; ?>" method="POST">
 
           <div class="form-group">
-            <textarea  name="mesazhi"class="form-control" rows="3"></textarea>
+            <textarea id="mesazhi"  name="mesazhi"class="form-control" rows="3"></textarea>
           </div>
-         <input type="submit"  class="btn btn-primary" value="Submit Comment">
+         <input type="submit" onclick="postComment(<?php echo $data['post']->id?> + `,${typi}`);"  class="btn btn-primary" value="Submit Comment">
         </form>
       </div>
     </div>
@@ -92,8 +95,8 @@
       <h5 class="card-header">Search</h5>
       <div class="card-body">
     
-          <input type="text"   onkeyup="showCustomer(this.value);" class="form-control" placeholder="Search for...">
-         <button  class="btn btn-primary">Search</button>
+          <input type="text" onkeyup="showCustomer(this.value);" class="form-control" placeholder="Search for...">
+         <button  class="btn btn-primary mt-3">Search</button>
           <span class="input-group-btn">
            
           </span>
@@ -111,18 +114,21 @@
     <!-- Side Widget -->
     <div class="card my-4">
       <h5 class="card-header">Rubrikat tjera</h5>
-      <div class="card-body">
+      <div style="background-color:rgb(17, 17, 17,0.15)
+
+
+" class="card-body card-3">
       <p>
-        <a href="http://localhost:8080/shareposts/pages/teknologji">Teknologji</a>
+        <a  style="font-weight:bold;"href="<?php echo URLROOT;?>/pages/teknologji">-Teknologji</a>
       </p>
       <p>
-        <a href="http://localhost:8080/shareposts/pages/sport">Sport</a>
+        <a style="font-weight:bold;"href="<?php echo URLROOT;?>/pages/sport">-Sport</a>
       </p>
       <p>
-        <a href="http://localhost:8080/shareposts/pages/bote">Bote</a>
+        <a style="font-weight:bold;" href="<?php echo URLROOT;?>/pages/bote">-Bote</a>
       </p>
       <p>
-        <a href="http://localhost:8080/shareposts/pages/kulture">Kulture</a>
+        <a style="font-weight:bold;" href="<?php echo URLROOT;?>/pages/kulture">-Kulture</a>
       </p>
       </div>
     </div>

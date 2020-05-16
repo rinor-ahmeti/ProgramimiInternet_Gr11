@@ -19,6 +19,7 @@ class Pages extends Controller
 
     $this->pageModel = $this->model('Page');
     $this->postModel = $this->model('Post');
+    $this->commentModel=$this->model('Comment');
   }
 
   public function index()
@@ -47,9 +48,13 @@ class Pages extends Controller
     $this->view('pages/index', $data);
   }
 
-  public function about()
-  {
+  public function about(){
+
+  $json = file_get_contents('https://api.nasa.gov/planetary/apod?api_key=Sl9c9nDYisX3Tts4ZjLpFtYbL2jlUFLhwCoeaqNL'); 
+$json= json_decode($json);
+  
     $data = [
+      'json'=>$json,
       'title' => 'About Us // Rreth Nesh',
       'description' => 'Krijuar nga Art Ahmetaj,Adi Sylejmani, Rinor Ahmeti dhe Samir Simnica.'
     ];
@@ -178,6 +183,7 @@ class Pages extends Controller
 
     if (isset($_POST['mesazhi'])) {
       sendEmail($id, $_POST['mesazhi']);
+      
     }
 
     $post = $this->postModel->getPostById($id);
@@ -192,12 +198,31 @@ class Pages extends Controller
   public function ajax($request='null')
   { 
      $post=$this->postModel->getTitlePosts($request);
-    
+    //TODO:fix this 
+    echo '<table class="vitamins">';
    
-     foreach ($post as $specificPost) {
+    echo '<tr>';
+    echo '<th>Title </th>';
+    echo '<th>  ID </th>';
+    echo '<th> Data </th>'; 
+    foreach ($post as $specificPost) {
        $location=URLROOT.'/pages/details/'.$specificPost->id;
- echo "<a href=$location> ID:$specificPost->id </a> dhe eshte krijuar ne $specificPost->created_at";
+      echo '<tr>';
+      echo "<td> $specificPost->title </td>";
+      echo "<td> <a href=$location> ID:$specificPost->id </td>";
+      echo "<td> $specificPost->created_at</td>";
+      
+      echo '</tr>';
+//  echo "<a href=$location> ID:$specificPost->id </a> dhe eshte krijuar ne $specificPost->created_at";
      }
-     
+     echo '</table>';
     }
+
+public function comment($request)
+{
+$insertedComment=explode(',',$request);
+[$content,$id,$title]=$insertedComment;
+$comment=$this->commentModel->insertComments($content,$title,$id);
+}
+
 }
