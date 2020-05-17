@@ -4,11 +4,11 @@
 
 <?php foreach($data['posts'] as $post) : ?>
 <br>
-<div class="fancy-border bgr" style="width:900px;">
-       <img class="card-img-top" style="width:800px;height:400px;"src="<?php echo URLROOT.'/' .'img/'.$post->image;?>" alt="Card image cap">
+<div class="lajmborder" style="width:900px;">
+       <img class="card-img-top" style="width:897px;height:400px;"src="<?php echo URLROOT.'/' .'img/'.$post->image;?>" alt="Card image cap">
        <div class="card-body">
-         <h2 class="card-title"><?php echo $post->title?></h2>
-         <p class="card-text"><?php echo getFirstLine($post->body).'.';?></p>
+         <h2 class="lajmtitle card-title"><?php echo $post->title?></h2>
+         <p class="lajmbody card-text"><?php echo getFirstLine($post->body).'.';?></p>
          <a href="<?php echo URLROOT; ?>/pages/details/<?php echo $post->id;?> " class="btn btn-primary">Read More &rarr;</a>
        </div>
        <div class="card-footer text-muted">
@@ -21,7 +21,8 @@
     <style> #rightbox{ 
                 float:right; 
                 width:25%; 
-                height:280px;}
+                height:280px;
+                }
                 </style>
     
     <div class="card my-4" id="rightbox">
@@ -44,6 +45,14 @@
       </div>
      
 
-
+      <nav aria-label="Page navigation example">
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+  </ul>
+</nav>
 
 <?php require APPROOT . '/views/inc/footer.php'; ?>

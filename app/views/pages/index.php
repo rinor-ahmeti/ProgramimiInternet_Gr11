@@ -3,9 +3,9 @@
   <div class="container">
     <!-- tu ja nis carousel -->
     <h1 id="maintext">Mireserdhet ne PIK!</h1>
-   
 
-    <div id="carouselExampleIndicators"  class="carousel slide mt-3" data-ride="carousel">
+
+    <div id="carouselExampleIndicators" class="carousel slide mt-3" data-ride="carousel">
       <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -13,26 +13,32 @@
       </ol>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img class=" carousel-foto d-block w-100" src="<?php echo URLROOT ?>/img/<?php echo $data['posts'][returnMax(unserialize($_COOKIE['user']))]->image ?>" alt="First slide">
-          <div class="shadowbackground carousel-caption d-none d-md-block">
-            <h5 class="black"><?php echo $data['posts'][returnMax(unserialize($_COOKIE['user']))]->title ?></h5>
-            <p class="black info"><?php echo  getFirstLine($data['posts'][returnMax(unserialize($_COOKIE['user']))]->body) . '.' ?></p>
-          </div>
+          <a href="<?php echo URLROOT; ?>/pages/details/<?php echo $data['posts'][returnMax(unserialize($_COOKIE['user']))]->id ?>">
+            <img class=" carousel-foto d-block w-100" src="<?php echo URLROOT ?>/img/<?php echo $data['posts'][returnMax(unserialize($_COOKIE['user']))]->image ?>" alt="First slide">
+            <div class="shadowbackground carousel-caption d-none d-md-block">
+              <h5 class="black"><?php echo $data['posts'][returnMax(unserialize($_COOKIE['user']))]->title ?></h5>
+              <p class="black info"><?php echo  getFirstLine($data['posts'][returnMax(unserialize($_COOKIE['user']))]->body) . '.' ?></p>
+            </div>
+          </a>
         </div>
         <div class="carousel-item">
-          <img class=" carousel-foto d-block w-100" src="<?php echo URLROOT ?>/img/<?php echo $data['posts'][$data['indexes'][0]]->image ?>" alt="Second slide">
-          <div class="shadowbackground carousel-caption d-none d-md-block">
-            <h5 class="black"><?php echo $data['posts'][$data['indexes'][0]]->title ?></h5>
-            <p class="black info"><?php echo getFirstLine($data['posts'][$data['indexes'][0]]->body) ?></p>
-          </div>
+          <a href="<?php echo URLROOT; ?>/pages/details/<?php echo $data['posts'][$data['indexes'][0]]->id ?>">
+            <img class=" carousel-foto d-block w-100" src="<?php echo URLROOT ?>/img/<?php echo $data['posts'][$data['indexes'][0]]->image ?>" alt="Second slide">
+            <div class="shadowbackground carousel-caption d-none d-md-block">
+              <h5 class="black"><?php echo $data['posts'][$data['indexes'][0]]->title ?></h5>
+              <p class="black info"><?php echo getFirstLine($data['posts'][$data['indexes'][0]]->body) ?></p>
+            </div>
         </div>
+        </a>
         <div class="carousel-item">
-          <img class="carousel-foto d-block w-100" src="<?php echo URLROOT ?>/img/<?php echo $data['posts'][$data['indexes'][1]]->image ?>?>" alt="Third slide">
-          <div class="shadowbackground carousel-caption d-none d-md-block">
-            <h5 class="black"><?php echo $data['posts'][$data['indexes'][1]]->title ?></h5>
-            <p class="black info"><?php echo getFirstLine($data['posts'][$data['indexes'][1]]->body) ?></p>
-          </div>
+          <a href="<?php echo URLROOT; ?>/pages/details/<?php echo $data['posts'][$data['indexes'][1]]->id ?>">
+            <img class="carousel-foto d-block w-100" src="<?php echo URLROOT ?>/img/<?php echo $data['posts'][$data['indexes'][1]]->image ?>?>" alt="Third slide">
+            <div class="shadowbackground carousel-caption d-none d-md-block">
+              <h5 class="black"><?php echo $data['posts'][$data['indexes'][1]]->title ?></h5>
+              <p class="black info"><?php echo getFirstLine($data['posts'][$data['indexes'][1]]->body) ?></p>
+            </div>
         </div>
+        </a>
       </div>
       <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>

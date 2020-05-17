@@ -6,6 +6,11 @@ height:600px;
 
 }
 
+body
+{
+    background-image: url(https://www.toptal.com/designers/subtlepatterns/patterns/sativa.png);
+}
+
 
 #maintext{
     margin-bottom:30px;
@@ -28,7 +33,11 @@ height:600px;
     font-size: 30px;
     color:white;
 }
-
+.titlefoto
+{
+    font-family: 'Oswald', serif;
+    text-align: center;
+}
 .coolfont
 {
   font-family: 'Oswald', sans-serif;
@@ -41,7 +50,23 @@ height:600px;
 {
   border-bottom:3px solid navy;
 }
+.lajmborder
+{
+    border:2px solid #0074D9
+    ;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 
+}
+
+.lajmtitle
+{
+    font-family: 'Oswald',sans-serif;
+}
+
+.lajmbody
+{
+    font-family: 'Lora', serif;
+}
 .info
 {font-size: 20px;}
 .confirmed
@@ -309,3 +334,4 @@ table.vitamins tfoot td {
         font-size: 0.8em;
     }
 }
+
