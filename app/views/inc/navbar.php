@@ -7,23 +7,23 @@
 
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="<?php echo URLROOT; ?>">Home</a>
+          <li class="nav-item ">
+            <a class="nav-link " href="<?php echo URLROOT; ?>">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo URLROOT; ?>/pages/about">About</a>
+            <a class="nav-link " href="<?php echo URLROOT; ?>/pages/about">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo URLROOT; ?>/pages/teknologji">Teknologji</a>
+            <a class="nav-link " href="<?php echo URLROOT; ?>/pages/teknologji">Teknologji</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo URLROOT; ?>/pages/sport">Sport</a>
+            <a class="nav-link " href="<?php echo URLROOT; ?>/pages/sport">Sport</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo URLROOT; ?>/pages/bote">Bote</a>
+            <a class="nav-link " href="<?php echo URLROOT; ?>/pages/bote">Bote</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo URLROOT; ?>/pages/kulture">Kulture</a>
+            <a class="nav-link " href="<?php echo URLROOT; ?>/pages/kulture">Kulture</a>
           </li>
         </ul>
         

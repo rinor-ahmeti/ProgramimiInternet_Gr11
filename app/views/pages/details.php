@@ -38,6 +38,7 @@ const typi='<?php echo $data['post']->lloji?>';
     <!-- Comments Form -->
     <div class="card my-4">
       <h5 class="card-header">Shkruaj koment</h5>
+     
       <div class="card-body">
       <form  action="<?php echo URLROOT; ?>/pages/details/<?php echo $data['post']->id; ?>" method="POST">
 
@@ -48,6 +49,7 @@ const typi='<?php echo $data['post']->lloji?>';
         </form>
       </div>
     </div>
+    <span  style="width:300px;height:30px; font-size:15px;"id="comentsucc" class="badge badge-success"></span>
 <div style="visibility:hidden">
     Single Comment
     <div class="media mb-4">
@@ -114,7 +116,7 @@ const typi='<?php echo $data['post']->lloji?>';
     <!-- Side Widget -->
     <div class="card my-4">
       <h5 class="card-header">Rubrikat tjera</h5>
-      <div style="background-color:rgb(17, 17, 17,0.15)
+      <div style="background-color:rgba(21, 101, 192,0.3)
 
 
 " class="card-body card-3">

@@ -30,4 +30,7 @@ str+=comment;
  await fetch('http://localhost:8080/shareposts/pages/comment/' + str);
 
 
+//  const spanComment=document.getElementById('comentsucc');
+//  spanComment.value="Komenti u postua me sukses!";
+
 }

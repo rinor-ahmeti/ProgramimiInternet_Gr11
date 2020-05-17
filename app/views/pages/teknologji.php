@@ -4,7 +4,7 @@
 
 <?php foreach($data['posts'] as $post) : ?>
 <br>
-<div class="lajmborder" style="width:900px;">
+<div class="lajmborder animate__zoomIn animate__animated" style="width:900px;">
        <img class="card-img-top" style="width:897px;height:400px;"src="<?php echo URLROOT.'/' .'img/'.$post->image;?>" alt="Card image cap">
        <div class="card-body">
          <h2 class="lajmtitle card-title"><?php echo $post->title?></h2>

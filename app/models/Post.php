@@ -23,6 +23,7 @@
       return $results;
     }
 
+ 
 //postComment(<?php echo $data['post']->id.'-'.$data['post']->lloji)
 
 
