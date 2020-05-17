@@ -9,7 +9,7 @@ class User
   }
 
 
-  // Login User
+  //LOGIN USER
   public function login($email, $password)
   {
     $this->db->query('SELECT * FROM users WHERE email = :email');
@@ -25,16 +25,16 @@ class User
     }
   }
 
-  // Find user by email
+  //FIND USER BY EMAIL
   public function findUserByEmail($email)
   {
     $this->db->query('SELECT * FROM users WHERE email = :email');
-    // Bind value
+    
     $this->db->bind(':email', $email);
 
     $row = $this->db->single();
 
-    // Check row
+    // CHECK ROW
     if ($this->db->rowCount() > 0) {
       return true;
     } else {
@@ -42,11 +42,11 @@ class User
     }
   }
 
-  // Get User by ID
+  // GET USER BY ID
   public function getUserById($id)
   {
     $this->db->query('SELECT * FROM users WHERE id = :id');
-    // Bind value
+
     $this->db->bind(':id', $id);
 
     $row = $this->db->single();

@@ -36,7 +36,6 @@
       $this->db->bind(':body', $data['body']);
       $this->db->bind(':lloji',$data['lloji']);
 
-      // Execute
       if($this->db->execute()){
         return true;
       } else {
@@ -46,14 +45,14 @@
 
     public function updatePost($data){
       $this->db->query('UPDATE posts SET title = :title, image=:image, lloji=:lloji,body = :body WHERE id = :id');
-      // Bind values
+
       $this->db->bind(':id', $data['id']);
       $this->db->bind(':image',$data['image']);
       $this->db->bind(':title', $data['title']);
       $this->db->bind(':body', $data['body']);
       $this->db->bind(':lloji',$data['lloji']);
 
-      // Execute
+
       if($this->db->execute()){
         return true;
       } else {
@@ -72,10 +71,10 @@
 
     public function deletePost($id){
       $this->db->query('DELETE FROM posts WHERE id = :id');
-      // Bind values
+  
       $this->db->bind(':id', $id);
 
-      // Execute
+      
       if($this->db->execute()){
         return true;
       } else {
@@ -114,6 +113,6 @@
       return $results;
 
     }
-//REPLACE(str, find_string, replace_with)
+
     
   }

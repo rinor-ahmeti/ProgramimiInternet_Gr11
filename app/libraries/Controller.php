@@ -1,22 +1,22 @@
 <?php
  
   class Controller {
-    // Load model
+    //LOAD MODEL
     public function model($model){
-      // Require model file
+      //REQUIRE MODEL FILE 
       require_once '../app/models/' . $model . '.php';
 
-      // Instatiate model
+      // INSTATIATE MODEL
       return new $model();
     }
 
-    // Load view
+    //LOAD VIEW WITH OPTIONAL DATA PARAM
     public function view($view, $data = []){
-      // Check for view file
+      //CHECK IF VIEW EXISTS
       if(file_exists('../app/views/' . $view . '.php')){
         require_once '../app/views/' . $view . '.php';
       } else {
-        // View does not exist
+        // VIEW DOES NOT EXIST
         die('View does not exist');
       }
     }
